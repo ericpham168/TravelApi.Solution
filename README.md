@@ -2,7 +2,7 @@
 
 #### _practice building an API_
 
-#### By: **Michelle Morin, Joseph Wangemann, Jonathan Carlos**, March 30 2020
+#### By: **Michelle Morin, Joseph Wangemann, Jonathan Carlos**, March 30, 2020
 
 ## Description
 
@@ -82,6 +82,7 @@ _To view/edit the source code of this application, open the contents of the Trav
 * Git
 * C#
 * dotnet script
+* MySQL
 * Entity Framework Core 2.2
 * RestSharp version 106.6.10
 * Newtonsoft.Json version 12.0.2

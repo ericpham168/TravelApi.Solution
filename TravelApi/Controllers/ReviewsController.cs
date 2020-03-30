@@ -37,7 +37,7 @@ namespace TravelApi.Controllers
       {
         query = query.Where(entry => entry.Destination == destination);
       }
-      
+
       List<Review> reviewList = query.ToList(); 
       reviewList.Sort((x,y) => y.Rating - x.Rating);
       return reviewList;

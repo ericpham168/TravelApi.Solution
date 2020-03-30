@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using TravelApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TravelApi.Controllers
 {
@@ -52,6 +53,7 @@ namespace TravelApi.Controllers
     }
 
     // PUT api/reviews/1
+    [Authorize]
     [HttpPut("{id}")]
     public void Put(int id, [FromBody] Review review)
     {
@@ -61,6 +63,7 @@ namespace TravelApi.Controllers
     }
 
     // DELETE api/reviews/1
+    [Authorize]
     [HttpDelete("{id}")]
     public void Delete(int id)
     {

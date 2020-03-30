@@ -45,6 +45,7 @@ namespace TravelApi.Controllers
     }
 
     // POST api/reviews
+    [Authorize]
     [HttpPost]
     public void Post([FromBody] Review review)
     {

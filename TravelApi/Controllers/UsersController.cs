@@ -17,6 +17,7 @@ namespace TravelApi.Controllers
         _userService = userService;
       }
 
+      // POST /users/authenticate
       [AllowAnonymous]
       [HttpPost("authenticate")]
       public IActionResult Authenticate([FromBody]User userParam)
@@ -33,6 +34,7 @@ namespace TravelApi.Controllers
         }
       }
       
+      // GET /users
       [HttpGet]
       public IActionResult GetAll()
       {

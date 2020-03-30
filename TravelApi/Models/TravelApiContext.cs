@@ -9,8 +9,7 @@ namespace TravelApi.Models
       : base(options)
     {
     }
-
-    public DbSet<Location> Locations { get; set; }
+    
     public DbSet<Review> Reviews { get; set; }
   }
 }

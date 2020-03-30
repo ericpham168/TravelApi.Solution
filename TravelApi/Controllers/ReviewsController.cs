@@ -19,7 +19,7 @@ namespace TravelApi.Controllers
 
     // GET api/reviews
     [HttpGet]
-    public ActionResult<IEnumerable<Review>> Get(string country, string city)
+    public ActionResult<IEnumerable<Review>> Get(string country, string city, string destination)
     {
       var query = _db.Reviews.AsQueryable();
 
@@ -33,8 +33,13 @@ namespace TravelApi.Controllers
         query = query.Where(entry => entry.City == city);
       }
 
-      List<Review> reviewList = query.ToList();
-      reviewList.OrderBy(x => x.Rating);
+      if (destination != null)
+      {
+        query = query.Where(entry => entry.Destination == destination);
+      }
+      
+      List<Review> reviewList = query.ToList(); 
+      reviewList.Sort((x,y) => y.Rating - x.Rating);
       return reviewList;
     }
 
@@ -48,26 +53,20 @@ namespace TravelApi.Controllers
 
     // PUT api/reviews/1
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string author, [FromBody] Review review)
+    public void Put(int id, [FromBody] Review review)
     {
-      if (author == review.Author)
-      {
-        review.ReviewId = id;
-        _db.Entry(review).State = EntityState.Modified;
-        _db.SaveChanges();
-      }
+      review.ReviewId = id;
+      _db.Entry(review).State = EntityState.Modified;
+      _db.SaveChanges();
     }
 
     // DELETE api/reviews/1
     [HttpDelete("{id}")]
-    public void Delete(int id, [FromBody] string author)
+    public void Delete(int id)
     {
       var reviewToDelete = _db.Reviews.FirstOrDefault(entry => entry.ReviewId == id);
-      if (author == reviewToDelete.Author)
-      {
-        _db.Reviews.Remove(reviewToDelete);
-        _db.SaveChanges();
-      }
+      _db.Reviews.Remove(reviewToDelete);
+      _db.SaveChanges();
     }
   }
 }

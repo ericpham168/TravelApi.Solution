@@ -6,6 +6,9 @@ namespace TravelApi.Models
   {
     public int ReviewId { get; set; }
     [Required]
+    [StringLength(25)]
+    public string Author { get; set; }
+    [Required]
     [StringLength(100)]
     public string Destination { get; set; }
     [Required]
@@ -20,6 +23,5 @@ namespace TravelApi.Models
     [Required]
     [StringLength(50)]
     public string Country { get; set; }
-    public virtual ApplicationUser User { get; set; }
   }
 }

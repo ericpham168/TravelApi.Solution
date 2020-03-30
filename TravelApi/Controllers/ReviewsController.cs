@@ -9,7 +9,7 @@ namespace TravelApi.Controllers
   [ApiController]
   public class ReviewsController : ControllerBase
   {
-    private TravelApiContext _db;
+    private readonly TravelApiContext _db;
 
     public ReviewsController(TravelApiContext db)
     {
@@ -37,12 +37,19 @@ namespace TravelApi.Controllers
       return reviewList;
     }
 
-    // POST api/locations
+    // POST api/reviews
     [HttpPost]
     public void Post([FromBody] Review review)
     {
       _db.Reviews.Add(review);
       _db.SaveChanges();
+    }
+
+    // PUT api/reviews/1
+    [HttpPut("{id}")]
+    public void Put(int id, [FromBody] Review review)
+    {
+
     }
   }
 }

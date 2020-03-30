@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using TravelApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TravelApi.Controllers
 {
@@ -47,9 +48,26 @@ namespace TravelApi.Controllers
 
     // PUT api/reviews/1
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody] Review review)
+    public void Put(int id, [FromBody] string author, [FromBody] Review review)
     {
+      if (author == review.Author)
+      {
+        review.ReviewId = id;
+        _db.Entry(review).State = EntityState.Modified;
+        _db.SaveChanges();
+      }
+    }
 
+    // DELETE api/reviews/1
+    [HttpDelete("{id}")]
+    public void Delete(int id, [FromBody] string author)
+    {
+      var reviewToDelete = _db.Reviews.FirstOrDefault(entry => entry.ReviewId == id);
+      if (author == reviewToDelete.Author)
+      {
+        _db.Reviews.Remove(reviewToDelete);
+        _db.SaveChanges();
+      }
     }
   }
 }

@@ -2,7 +2,7 @@
 
 #### _practice building an API_
 
-#### By: **Michelle Morin, Joseph Wangemann, Jonathan Carlos**, March 30, 2020
+#### By: **Michelle Morin, Joseph Wangemann, Jonathan Carlos, Kristina Hengster Tintor**, March 30-31, 2020
 
 ## Description
 
@@ -91,4 +91,4 @@ _To view/edit the source code of this application, open the contents of the Trav
 
 Licensed under the MIT license.
 
-&copy; 2020 - Michelle Morin, Joseph Wangemann, Jonathan Carlos 
+&copy; 2020 - Michelle Morin, Joseph Wangemann, Jonathan Carlos, Kristina Hengster Tintor

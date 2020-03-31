@@ -1,0 +1,296 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Travel API",
+    "description": "This is a sample travel reviews API.",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "localhost:5004",
+  "basePath": "/api",
+  "paths": {
+    "/reviews": {
+      "get": {
+        "summary": "Gets all reviews",
+        "description": "Returns a list containing all reviews in order from highest rating to lowest rating",
+        "responses": {
+          "200": {
+            "description": "A list of Reviews",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "Destination": {
+                    "type": "string"
+                  },
+                  "City": {
+                    "type": "string"
+                  },
+                  "Country": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "List does not contain any reviews"
+          }
+        }
+      },
+      "post": {
+        "summary": "Adds a new review to the reviews list",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "bearer token",
+            "description": "Assigned json web token for specific user trying to post a new review",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "review",
+            "description": "Review object that needs to be added to the reviews list",
+            "required": true,
+            "schema": {
+              "required": [
+                "Author",
+                "Destination",
+                "Rating",
+                "Description",
+                "City",
+                "Country"
+              ],
+              "properties": {
+                "Author": {
+                  "type": "string"
+                },
+                "Destination": {
+                  "type": "string"
+                },
+                "Rating": {
+                  "type": "integer"
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "City": {
+                  "type": "string"
+                },
+                "Country": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Review successfully added"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "500": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/reviews/{id}": {
+      "put": {
+        "summary": "Update an existing review",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "bearer token",
+            "description": "Assigned json web token for specific user trying to post a new review",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ReviewId of review to be updated",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Review object that needs to be updated in the reviews list",
+            "required": true,
+            "schema": {
+              "required": [
+                "Author",
+                "Destination",
+                "Rating",
+                "Description",
+                "City",
+                "Country"
+              ],
+              "properties": {
+                "Author": {
+                  "type": "string"
+                },
+                "Destination": {
+                  "type": "string"
+                },
+                "Rating": {
+                  "type": "integer"
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "City": {
+                  "type": "string"
+                },
+                "Country": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A review object updated"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Review not found"
+          },
+          "500": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes an existing review",
+        "description": "Deletes review by Id",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "bearer token",
+            "description": "Assigned json web token for specific user trying to post a new review",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ReviewId of review to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid Id"
+          },
+          "500": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "returns list of all authenticated users",
+        "description": "only authorized users can do this",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "bearer token",
+            "description": "authorization token of user",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successfully returns list of users"
+          },
+          "500": {
+            "description": "unauthorized"
+          }
+        }
+      }
+    },
+    "/users/authenticate": {
+      "post": {
+        "summary": "returns token for authenticated user",
+        "description": "",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userParam",
+            "description": "user object",
+            "required": true,
+            "schema": {
+              "required": [
+                "username",
+                "password"
+              ],
+              "properties": {
+                "username": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "a token",
+            "schema": {
+              "required": [
+                "token"
+              ],
+              "properties": {
+                "token": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "user not found"
+          }
+        }
+      }
+    }
+  }
+}

@@ -21,6 +21,13 @@ namespace TravelApi.Models
           new Review { ReviewId = 3, Author = "Cletus", Destination = "The sticks", Rating = 5, Description = "real nice", City = "Cedar Creek", Country = "Canada" },
           new Review { ReviewId = 4, Author = "James", Destination = "Da Club", Rating = 3, Description = "It was aight", City = "Sydney", Country = "Australia" }
         );
+      
+      builder.Entity<User>()
+        .HasData(
+          new User { Id = 1, FirstName = "Michelle", LastName = "Nolastname", Username = "michelle", Password = "hello" },
+          new User { Id = 2, FirstName = "Joe", LastName = "Yolo", Username = "joe", Password = "world" },
+          new User { Id = 3, FirstName = "James", LastName = "Aight", Username = "james", Password = "password" }
+        );
     }
   }
 }

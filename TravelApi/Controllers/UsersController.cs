@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using TravelApi.Services;
 using TravelApi.Models;
+using System.Linq;
 
 namespace TravelApi.Controllers
 {

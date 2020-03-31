@@ -42,6 +42,9 @@ namespace TravelApi
 			services.AddDbContext<TravelApiContext>(opt => opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+			//register the swagger services
+			services.AddSwaggerDocument();
+
 			// configure strongly typed settings objects
 			var appSettingsSection = Configuration.GetSection("AppSettings");
 			services.Configure<AppSettings>(appSettingsSection);
@@ -90,6 +93,9 @@ namespace TravelApi
 				.AllowAnyHeader());
 
 			app.UseAuthentication();
+
+			app.UseOpenApi();
+			app.UseSwaggerUi3();
 
 			// app.UseHttpsRedirection();
 			app.UseMvc();

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using TravelApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
-using TravelApi.Services;
 
 namespace TravelApi.Controllers
 {

@@ -8,7 +8,8 @@ namespace TravelApi.Controllers
 {
   [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
     public class UsersController : ControllerBase
     {
       private IUserService _userService;

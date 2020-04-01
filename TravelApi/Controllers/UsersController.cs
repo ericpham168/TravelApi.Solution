@@ -6,21 +6,32 @@ using System.Linq;
 
 namespace TravelApi.Controllers
 {
-  [Authorize]
+  // [Authorize]
   [ApiController]
   [Route("api/[controller]")]
   [ApiVersion("1.0")]
   public class UsersController : ControllerBase
   {
     private IUserService _userService;
+    private readonly TravelApiContext _db;
 
-    public UsersController(IUserService userService)
+    public UsersController(TravelApiContext db, IUserService userService)
     {
+      _db = db;
       _userService = userService;
     }
 
+    // POST /users
+    // [AllowAnonymous]
+    [HttpPost]
+    public void Register([FromBody]User newUser)
+    {
+      _db.Users.Add(newUser);
+      _db.SaveChanges();
+    }
+
     // POST /users/authenticate
-    [AllowAnonymous]
+    // [AllowAnonymous]
     [HttpPost("authenticate")]
     public IActionResult Authenticate([FromBody]User userParam)
     {

@@ -53,7 +53,7 @@ namespace TravelApi.Controllers
     }
 
     // POST api/reviews
-    [Authorize]
+    // [Authorize]
     [HttpPost]
     public void Post([FromBody] Review review)
     {
@@ -62,7 +62,7 @@ namespace TravelApi.Controllers
     }
 
     // PUT api/reviews/1
-    [Authorize]
+    // [Authorize]
     [HttpPut("{id}")]
     public void Put(int id, [FromBody] Review review)
     {
@@ -72,7 +72,7 @@ namespace TravelApi.Controllers
     }
 
     // DELETE api/reviews/1
-    [Authorize]
+    // [Authorize]
     [HttpDelete("{id}")]
     public void Delete(int id)
     {

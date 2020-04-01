@@ -45,6 +45,13 @@ namespace TravelApi.Controllers
       return reviewList;
     }
 
+    // GET api/reviews/5
+    [HttpGet("{id}")]
+    public ActionResult<Review> Get(int id)
+    {
+      return _db.Reviews.FirstOrDefault(entry => entry.ReviewId == id);
+    }
+
     // POST api/reviews
     [Authorize]
     [HttpPost]

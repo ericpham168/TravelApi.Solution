@@ -2,17 +2,18 @@
 
 #### _practice building an API_
 
-#### By: **Michelle Morin, Joseph Wangemann, Jonathan Carlos, Kristina Hengster Tintor**, March 30-31, 2020
+#### By: **Michelle Morin, Joseph Wangemann, Jonathan Carlos, Kristina Hengster Tintor**, March 30-April 2, 2020
 
 ## Description
 
-_This API allows users to GET and POST reviews about various travel destinations around the world._
+_This API allows users to GET, POST, PUT, and DELETE reviews about various travel destinations around the world._
 
 ## Specification user stories:
 * A user is able to GET and POST reviews about travel destinations.
 * A user is able to GET reviews by country, city, or destination name. Reviews are returned in order of highest to lowest rating.
 * A user is able to see the most popular travel destinations by overall rating.
-* A user is able to PUT and DELETE reviews, but only if that user wrote them.
+* A user is able to PUT and DELETE reviews.
+* A user is able to receive a JSON web token (expires 1 day after issuance) by sending a valid username and password in a POST request to '/users/authenticate'. Web tokens are not currently used to authenticate user requests to GET/POST/PUT/DELETE reviews.
 
 ## Setup/Installation Requirements
 
@@ -74,6 +75,7 @@ _Recreate the ``travel`` database using the following commands (in Terminal on m
 
 _Run this application by entering the following command in Terminal (macOS) or PowerShell (Windows) at the root of the TravelApi directory:_
 * ``dotnet run`` or ``dotnet watch run``
+* access the [Swagger UI](http://localhost:5004/swagger/index.html#/) for testing this API
 
 _To view/edit the source code of this application, open the contents of the TravelApi.Solution directory in a text editor or IDE of your choice (e.g., to open all contents of the directory in Visual Studio Code on macOS, enter the command_ ``code .`` _in Terminal at the root of the PierreTreats.Solution directory)._
 
@@ -86,6 +88,9 @@ _To view/edit the source code of this application, open the contents of the Trav
 * Entity Framework Core 2.2
 * RestSharp version 106.6.10
 * Newtonsoft.Json version 12.0.2
+* Swagger 3.0 documentation (swagger.json)
+* NSwag
+* JSON Web Token Authentication
 
 ## License
 

@@ -77,7 +77,7 @@ _Run this application by entering the following command in Terminal (macOS) or P
 * ``dotnet run`` or ``dotnet watch run``
 * access the [Swagger UI](http://localhost:5004/swagger/index.html#/) for testing this API
 
-_To view/edit the source code of this application, open the contents of the TravelApi.Solution directory in a text editor or IDE of your choice (e.g., to open all contents of the directory in Visual Studio Code on macOS, enter the command_ ``code .`` _in Terminal at the root of the PierreTreats.Solution directory)._
+_To view/edit the source code of this application, open the contents of the TravelApi.Solution directory in a text editor or IDE of your choice (e.g., to open all contents of the directory in Visual Studio Code on macOS, enter the command_ ``code .`` _in Terminal at the root of the TravelApi.Solution directory)._
 
 ## Technologies Used
 
